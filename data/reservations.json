@@ -1,0 +1,325 @@
+{
+  "categories": [
+    {
+      "category": "숙소",
+      "items": [
+        {
+          "region": "프라하",
+          "brand": "베스트웨스턴",
+          "period": "7/29~8/2(4박)",
+          "amount": 655.71,
+          "currency": "유로",
+          "krw": 1114707,
+          "status": "예정",
+          "paid": false
+        },
+        {
+          "region": "뮌헨",
+          "brand": "힐튼",
+          "period": "8/2~8/5(3박)",
+          "amount": 515.21,
+          "currency": "유로",
+          "krw": 875857.0000000001,
+          "status": "예정",
+          "paid": false
+        },
+        {
+          "region": "린다우",
+          "brand": "에어비앤비",
+          "period": "8/5~8/9(4박)",
+          "amount": null,
+          "currency": "원화",
+          "krw": 1014167,
+          "status": "예정",
+          "paid": false
+        },
+        {
+          "region": "프라하",
+          "brand": "힐튼",
+          "period": "8/9~8/10(1박)",
+          "amount": 3301.05,
+          "currency": "체코",
+          "krw": 234374.55000000002,
+          "status": "예정",
+          "paid": false
+        }
+      ],
+      "subtotal": 3239105.55
+    },
+    {
+      "category": "렌트",
+      "items": [
+        {
+          "region": "뮌헨",
+          "brand": "유럽카",
+          "period": "8/5~8/9(4박)",
+          "amount": 457.06,
+          "currency": "유로",
+          "krw": 777002,
+          "status": "예정",
+          "paid": false
+        },
+        {
+          "region": "스위스",
+          "brand": "비넷 1년권",
+          "period": null,
+          "amount": 40,
+          "currency": "스위스",
+          "krw": 76800,
+          "status": "예정",
+          "paid": false
+        },
+        {
+          "region": "오스트리아",
+          "brand": "비넷 연간권",
+          "period": null,
+          "amount": 12.8,
+          "currency": "유로",
+          "krw": 21760,
+          "status": "예정",
+          "paid": false
+        },
+        {
+          "region": "뮌헨",
+          "brand": "유류대",
+          "period": "820 km",
+          "amount": null,
+          "currency": "원화",
+          "krw": 150000,
+          "status": "예정",
+          "paid": false
+        }
+      ],
+      "subtotal": 1025562
+    },
+    {
+      "category": "공연",
+      "items": [
+        {
+          "region": "브레겐트",
+          "brand": "라 트라비아타",
+          "period": null,
+          "amount": 306,
+          "currency": "유로",
+          "krw": 520200,
+          "status": "완료",
+          "paid": true
+        }
+      ],
+      "subtotal": 520200
+    },
+    {
+      "category": "관람",
+      "items": [
+        {
+          "region": "뮌헨",
+          "brand": "BMW 박물관",
+          "period": null,
+          "amount": 38,
+          "currency": "유로",
+          "krw": 64980,
+          "status": "완료",
+          "paid": true
+        },
+        {
+          "region": "뮌헨",
+          "brand": "바이에른 구장",
+          "period": null,
+          "amount": null,
+          "currency": null,
+          "krw": null,
+          "status": null,
+          "paid": false
+        },
+        {
+          "region": "오스트리아",
+          "brand": "팬더 케이블카",
+          "period": null,
+          "amount": 51.5,
+          "currency": "유로",
+          "krw": 87550,
+          "status": "예정",
+          "paid": false
+        },
+        {
+          "region": "취리히",
+          "brand": "린트 초콜릿 박물관",
+          "period": null,
+          "amount": 51,
+          "currency": "스위스",
+          "krw": 96900,
+          "status": "완료",
+          "paid": true
+        },
+        {
+          "region": "취리히",
+          "brand": "FIFA박물관",
+          "period": null,
+          "amount": null,
+          "currency": null,
+          "krw": null,
+          "status": null,
+          "paid": false
+        }
+      ],
+      "subtotal": 249430
+    },
+    {
+      "category": "당일 투어",
+      "items": [
+        {
+          "region": "프라하",
+          "brand": "드레스덴",
+          "period": null,
+          "amount": null,
+          "currency": null,
+          "krw": 87000,
+          "status": "완료",
+          "paid": true
+        },
+        {
+          "region": "프라하",
+          "brand": "체스키 크롬로프",
+          "period": null,
+          "amount": null,
+          "currency": null,
+          "krw": 264000,
+          "status": "완료",
+          "paid": true
+        },
+        {
+          "region": "뮌헨",
+          "brand": "퓌센",
+          "period": null,
+          "amount": null,
+          "currency": null,
+          "krw": 329700,
+          "status": "완료",
+          "paid": true
+        },
+        {
+          "region": null,
+          "brand": "노이슈반슈타인성",
+          "period": null,
+          "amount": 49.5,
+          "currency": "유로",
+          "krw": 84645,
+          "status": "완료",
+          "paid": true
+        },
+        {
+          "region": null,
+          "brand": "왕복교통비",
+          "period": null,
+          "amount": 96,
+          "currency": "유로",
+          "krw": 165120,
+          "status": "예정",
+          "paid": false
+        }
+      ],
+      "subtotal": 930465
+    },
+    {
+      "category": "버스",
+      "items": [
+        {
+          "region": "프라하->뮌헨",
+          "brand": "Rejio_JET",
+          "period": null,
+          "amount": 1437,
+          "currency": "체코",
+          "krw": 102027,
+          "status": "완료",
+          "paid": true
+        },
+        {
+          "region": "뮌헨->프라하",
+          "brand": "Rejio_JET",
+          "period": null,
+          "amount": 1047,
+          "currency": "체코",
+          "krw": 74337,
+          "status": "완료",
+          "paid": true
+        }
+      ],
+      "subtotal": 176364
+    },
+    {
+      "category": "철도",
+      "items": [
+        {
+          "region": "프라하->뮌헨",
+          "brand": "DB",
+          "period": null,
+          "amount": null,
+          "currency": "유로",
+          "krw": 0,
+          "status": null,
+          "paid": false
+        }
+      ],
+      "subtotal": null
+    }
+  ],
+  "etc": [
+    {
+      "group": "대중교통패스",
+      "region": "뮌헨",
+      "brand": "그룹1일권(M존)",
+      "note": "그룹권이 효율적",
+      "amount": 37,
+      "currency": "유로",
+      "krw": 62900,
+      "status": null,
+      "paid": false
+    },
+    {
+      "group": "대중교통패스",
+      "region": "뮌헨",
+      "brand": "시티투어카드",
+      "note": "가성비 안좋음",
+      "amount": null,
+      "currency": null,
+      "krw": null,
+      "status": null,
+      "paid": false
+    },
+    {
+      "group": "대중교통패스",
+      "region": "독일",
+      "brand": "도이칠란트티켓",
+      "note": "렌터카 이용시 가성비 안나옴",
+      "amount": null,
+      "currency": null,
+      "krw": null,
+      "status": null,
+      "paid": false
+    },
+    {
+      "group": "대중교통패스",
+      "region": "린다우",
+      "brand": "보덴호카드",
+      "note": "메리트가 없을듯",
+      "amount": null,
+      "currency": null,
+      "krw": null,
+      "status": null,
+      "paid": false
+    },
+    {
+      "group": "대중교통패스",
+      "region": "프라하",
+      "brand": "PID Litacka앱",
+      "note": "30분권이 유리, 17번 트램이용",
+      "amount": null,
+      "currency": null,
+      "krw": null,
+      "status": null,
+      "paid": false
+    }
+  ],
+  "grandTotal": 6141126.55,
+  "grandTotalExcludingHotel": 2902021
+}

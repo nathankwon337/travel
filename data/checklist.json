@@ -1,0 +1,273 @@
+[
+  {
+    "category": "Basic Item",
+    "items": [
+      {
+        "name": "여권",
+        "note": "학교 보관"
+      },
+      {
+        "name": "항공권",
+        "note": "학교 보관"
+      },
+      {
+        "name": "국제학생증",
+        "note": null
+      },
+      {
+        "name": "국제운전면허증",
+        "note": null
+      },
+      {
+        "name": "여권사본",
+        "note": null
+      },
+      {
+        "name": "여권용 사진 1~2매",
+        "note": null
+      },
+      {
+        "name": "네임택",
+        "note": null
+      }
+    ]
+  },
+  {
+    "category": "Payment Item",
+    "items": [
+      {
+        "name": "트래블 월릿",
+        "note": null
+      },
+      {
+        "name": "유로",
+        "note": null
+      },
+      {
+        "name": "예비 카드",
+        "note": null
+      }
+    ]
+  },
+  {
+    "category": "Electric Item",
+    "items": [
+      {
+        "name": "충전기",
+        "note": null
+      },
+      {
+        "name": "충전단자",
+        "note": null
+      },
+      {
+        "name": "멀티탭",
+        "note": null
+      },
+      {
+        "name": "보조배터리",
+        "note": null
+      }
+    ]
+  },
+  {
+    "category": "Sanitary",
+    "items": [
+      {
+        "name": "세면도구",
+        "note": null
+      },
+      {
+        "name": "로션",
+        "note": null
+      },
+      {
+        "name": "렌즈",
+        "note": null
+      },
+      {
+        "name": "고무줄",
+        "note": null
+      },
+      {
+        "name": "손소독제",
+        "note": null
+      },
+      {
+        "name": "손소톡티슈",
+        "note": null
+      },
+      {
+        "name": "인공눈물",
+        "note": null
+      },
+      {
+        "name": "립밤",
+        "note": null
+      }
+    ]
+  },
+  {
+    "category": "Sun Protect",
+    "items": [
+      {
+        "name": "모자",
+        "note": null
+      },
+      {
+        "name": "선크림",
+        "note": null
+      },
+      {
+        "name": "선글라스",
+        "note": null
+      },
+      {
+        "name": "팔토시, 목토시",
+        "note": null
+      }
+    ]
+  },
+  {
+    "category": "Theft Protect",
+    "items": [
+      {
+        "name": "소형열쇠",
+        "note": null
+      },
+      {
+        "name": "옷핀",
+        "note": null
+      },
+      {
+        "name": "복대",
+        "note": null
+      },
+      {
+        "name": "휴대폰 분실방지",
+        "note": null
+      },
+      {
+        "name": "슬링백",
+        "note": null
+      }
+    ]
+  },
+  {
+    "category": "Photo Item",
+    "items": [
+      {
+        "name": "폴라로이드 카메라",
+        "note": null
+      }
+    ]
+  },
+  {
+    "category": "Clothes",
+    "items": [
+      {
+        "name": "속옷",
+        "note": null
+      },
+      {
+        "name": "양말",
+        "note": null
+      },
+      {
+        "name": "바람막이",
+        "note": null
+      },
+      {
+        "name": "바지",
+        "note": null
+      },
+      {
+        "name": "티셔츠",
+        "note": null
+      },
+      {
+        "name": "손수건",
+        "note": null
+      },
+      {
+        "name": "후드",
+        "note": null
+      },
+      {
+        "name": "신발",
+        "note": null
+      }
+    ]
+  },
+  {
+    "category": "Medicine",
+    "items": [
+      {
+        "name": "종합감기약",
+        "note": null
+      },
+      {
+        "name": "지사제",
+        "note": null
+      },
+      {
+        "name": "소화제",
+        "note": null
+      },
+      {
+        "name": "해열진통제",
+        "note": null
+      },
+      {
+        "name": "밴드",
+        "note": null
+      },
+      {
+        "name": "연고",
+        "note": null
+      }
+    ]
+  },
+  {
+    "category": "etc",
+    "items": [
+      {
+        "name": "지퍼백/비닐봉지",
+        "note": null
+      },
+      {
+        "name": "동전지갑",
+        "note": null
+      },
+      {
+        "name": "필기도구",
+        "note": null
+      },
+      {
+        "name": "안경",
+        "note": null
+      }
+    ]
+  },
+  {
+    "category": "Korean food",
+    "items": [
+      {
+        "name": "라면",
+        "note": null
+      },
+      {
+        "name": "누릉지",
+        "note": null
+      },
+      {
+        "name": "생수",
+        "note": null
+      },
+      {
+        "name": "과자",
+        "note": null
+      }
+    ]
+  }
+]

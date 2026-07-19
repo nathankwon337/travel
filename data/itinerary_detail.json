@@ -1,0 +1,508 @@
+[
+  {
+    "date": "2026-07-29",
+    "items": [
+      {
+        "time": "11:05-17:05",
+        "detail": "인천 2터미널->프라하\n입국심사 및 수하물수령 18시전후(러시아워) : 대중교통 추천!\n\n -> 호텔 ▶체크인(19:30 예정)",
+        "location": "[체코_프라하]\n숙소 : Best Western Moran",
+        "place": null,
+        "note": "이동 경로:공항 터미널 앞 정류장에서 100번 버스.\n종점인 Zličín(즐리친) 역 하차\n지하철 B선(노란색) 환승 후 \nKarlovo náměstí(카를로보 나메스티) 역 하차.\n도보로 약 2~3분 이동하면 호텔 도착.(약50분)\n*티켓 팁: 공항 인포메이션 센터나 자판기이용.\n 90분짜리 대중교통 티켓(환승 가능) 구매.\n약 50코루나(약3500원)"
+      },
+      {
+        "time": "20:00",
+        "detail": "★저녁식사",
+        "location": null,
+        "place": null,
+        "note": "식당 : 프라하참조"
+      },
+      {
+        "time": null,
+        "detail": "프라하 구시가지 투어(천문시계, 구시청사)_천문시계탑 정시 퍼포먼스\n*천문시계탑 전망대:9시~21시,300코루나/200코루나+100코루나(EV)",
+        "location": null,
+        "place": null,
+        "note": "도보 5분"
+      },
+      {
+        "time": null,
+        "detail": "프라하 가장큰광장공원.\n프라하 투척 사건_신시청사 건물 광장 한쪽. 산책좋음.",
+        "location": null,
+        "place": "카를로보 나메스티 광장",
+        "note": "도보3분"
+      },
+      {
+        "time": null,
+        "detail": "프라하 민주화상징:바츨라프광장, 국립박물관.\n주변 쇼핑몰, 레스토랑,환전소 밀집.(신시가지 분위기)",
+        "location": null,
+        "place": "국립박물관 및 바츨라프 광장",
+        "note": "도보 15-20분"
+      }
+    ]
+  },
+  {
+    "date": "2026-07-30",
+    "items": [
+      {
+        "time": "07:30",
+        "detail": "★조식",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "09:00-13:00",
+        "detail": "프라하 성 투어(성 종탑 전망대에서 시내 조망)",
+        "location": null,
+        "place": "프라하 성",
+        "note": "트램"
+      },
+      {
+        "time": null,
+        "detail": "★점심식사",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "14:00-17:00",
+        "detail": "카렐교 및 말라스트라나 산책",
+        "location": null,
+        "place": "카렐교",
+        "note": "도보"
+      },
+      {
+        "time": null,
+        "detail": "★저녁식사",
+        "location": null,
+        "place": "블타바 강변(바플라브카) 야경도보산책",
+        "note": "도보"
+      }
+    ]
+  },
+  {
+    "date": "2026-07-31",
+    "items": [
+      {
+        "time": "07:00",
+        "detail": "★조식",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "09:00-18:00",
+        "detail": "프라하 근교 (체스키 크룸로프 투어) ",
+        "location": null,
+        "place": "체스키 크룸로프(버스 2H30M이동)",
+        "note": "1일 투어 예약 완료 (마이리얼트립)"
+      },
+      {
+        "time": null,
+        "detail": "*개별★점심식사및 자유시간 : 마을중심부/강가 레스토랑 개별방문.",
+        "location": null,
+        "place": null,
+        "note": "보헤미안전통립(BBQ), 굴라시(고기스튜), 꼴레뇨(체코식족발), 에겐베르그양조장맥주 추천."
+      },
+      {
+        "time": "19:00",
+        "detail": "★저녁식사(예약필수): 투어가이드 현지인맛집추천받아 당일 예약?",
+        "location": null,
+        "place": null,
+        "note": "스비치코바(크림소스 소고기요리), \n체코식 타파스(흘레비치키)-한입오픈샌드위치/맥주안주_에그,야채,신선한 치즈 위주 토핑선택."
+      }
+    ]
+  },
+  {
+    "date": "2026-08-01",
+    "items": [
+      {
+        "time": "07:00",
+        "detail": "조식",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "08:00-19:00",
+        "detail": "드레스덴 & 바스테이 투어(1h30m~2h이동)",
+        "location": null,
+        "place": "독일 드레스덴/바슈타이",
+        "note": "1일 투어 예약 완료 - 바스테이 관광 포함"
+      },
+      {
+        "time": null,
+        "detail": "*드레스덴 ★점심 : 슈니첼 & 학센 맛집(1시간30분자유시간포함)",
+        "location": null,
+        "place": "식당 : Augustiner an der Frauenkirche ",
+        "note": "드레스덴 중심, 노이마르크트광장근처 위치."
+      },
+      {
+        "time": null,
+        "detail": "*바스테이 : 스낵, 샌드위치 간식거리.",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": null,
+        "detail": "★저녁식사",
+        "location": null,
+        "place": null,
+        "note": null
+      }
+    ]
+  },
+  {
+    "date": "2026-08-02",
+    "items": [
+      {
+        "time": "07:00-08:40",
+        "detail": "★조식, 짐싸기, 체크아웃◀",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "09:00",
+        "detail": "프라하 플로렌츠버스터미널 도착",
+        "location": "이동",
+        "place": null,
+        "note": "볼트/우버(10M/약150-250CZK)"
+      },
+      {
+        "time": "09:30-14:15",
+        "detail": "프라하 플로렌츠버스터미널 -> 뮌헨 중앙버스터미널 (4h45m)\n★점심식사",
+        "location": "[독일_뮌헨]\n숙소 : Hilton Munchen City",
+        "place": "※간단 식사 챙기기_점심식사포함",
+        "note": "레지오젯(RegioJet) 버스 예약 완료(노란색버스, FREE WIFI&핫음료, 충전용콘센트,화장실)\n*프라하 출발지: UAN Florenc는 지하철B선과C선 교차하는 Florenc역과 바로연결.\n"
+      },
+      {
+        "time": "16:00-18:00",
+        "detail": "마리엔 광장 및 시내 중심가 투어",
+        "location": null,
+        "place": null,
+        "note": "도보/U-Bahn"
+      },
+      {
+        "time": null,
+        "detail": "★저녁식사",
+        "location": null,
+        "place": null,
+        "note": null
+      }
+    ]
+  },
+  {
+    "date": "2026-08-03",
+    "items": [
+      {
+        "time": "07:00",
+        "detail": "★조식",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "09:00-18:00",
+        "detail": "뮌헨 근교 (퓌센 노이슈반슈타인 성 투어)",
+        "location": null,
+        "place": "노이반슈타인성(13:55분 예약 완료)",
+        "note": "1일 투어 예약 완료 (차량/기차)"
+      },
+      {
+        "time": null,
+        "detail": "★점심식사",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": null,
+        "detail": "★저녁식사",
+        "location": null,
+        "place": null,
+        "note": null
+      }
+    ]
+  },
+  {
+    "date": "2026-08-04",
+    "items": [
+      {
+        "time": null,
+        "detail": "★조식",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "11:00-12:00",
+        "detail": "BMW 박물관 & 벨트 투어",
+        "location": null,
+        "place": null,
+        "note": "[BMW 박물관 예약 완료] \nhttps://www.bmw-welt.com/en/experience/bmw_museum.html"
+      },
+      {
+        "time": null,
+        "detail": "★점심식사",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "14:00-17:00",
+        "detail": "올림픽 공원 및 주변 산책",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": null,
+        "detail": "★저녁식사",
+        "location": null,
+        "place": null,
+        "note": null
+      }
+    ]
+  },
+  {
+    "date": "2026-08-05",
+    "items": [
+      {
+        "time": "07:30",
+        "detail": "★조식, 짐싸기, 체크아웃◀",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "09:00-12:00",
+        "detail": "뮌헨 -> 린다우 이동",
+        "location": "이동",
+        "place": null,
+        "note": "렌터카(Europcar) 예약완료, 에어비앤비 체크인"
+      },
+      {
+        "time": null,
+        "detail": "★점심식사",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "14:00-17:00",
+        "detail": "린다우 섬 항구 및 구시가지 산책",
+        "location": "독일_린다우\n숙소 : Air BnB Langenweg 33, Lindau",
+        "place": "린다우 섬",
+        "note": "사자상, 등대 등 사진 촬영 / [전망 맛집] Restaurant Reutemann (항구/사자상 조망 테라스)"
+      },
+      {
+        "time": null,
+        "detail": "★저녁식사",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "21:00-23:00",
+        "detail": "브레겐츠 페스티벌 무대 관람 (라 트라비아타)",
+        "location": null,
+        "place": "오스트리아_브레겐츠 : \nSeebühne (제에게: 보덴호수 위 떠있는 무대)",
+        "note": "[공연 예약 완료] \nhttps://bregenzerfestspiele.com/"
+      }
+    ]
+  },
+  {
+    "date": "2026-08-06",
+    "items": [
+      {
+        "time": null,
+        "detail": "★조식",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "10:00-12:00",
+        "detail": "린다우 항구 및 선셋 크루즈 예약 확인",
+        "location": null,
+        "place": "린다우 항구",
+        "note": "[선셋크루즈 예약]\n https://shop.bsb.de/ / [일몰 맛집] EIL.GUT.HALLE (항구 옆 일몰 감상하기 좋은 야외 좌석)"
+      },
+      {
+        "time": null,
+        "detail": "★점심식사",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "14:00-16:30",
+        "detail": "팬더산(Pfänder) 케이블카 전망",
+        "location": null,
+        "place": "오스트리아_브레겐츠",
+        "note": "[팬더 케이블카] \nhttps://www.pfaenderbahn.at/en/ / \n[추천] Berghaus Pfänder (호수 전체 조망 테라스 식사)"
+      },
+      {
+        "time": null,
+        "detail": "★저녁식사",
+        "location": null,
+        "place": null,
+        "note": null
+      }
+    ]
+  },
+  {
+    "date": "2026-08-07",
+    "items": [
+      {
+        "time": null,
+        "detail": "★조식 or 브런치",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "12:00-14:00",
+        "detail": "린트 홈 오브 초콜릿 박물관",
+        "location": null,
+        "place": "스위스 _취리히 킬히베르크",
+        "note": "[린트 초콜릿 예약 완료] \nhttps://tickets.lindt-home-of-chocolate.com/ (사전예약 필수)"
+      },
+      {
+        "time": "14:30-17:00",
+        "detail": "취리히 시내 투어",
+        "location": null,
+        "place": null,
+        "note": "스위스 비네트 구매 필요 / [저녁 추천] Valentin Wine Dining (분위기 좋은 와인 다이닝)"
+      },
+      {
+        "time": null,
+        "detail": "★저녁식사",
+        "location": null,
+        "place": null,
+        "note": null
+      }
+    ]
+  },
+  {
+    "date": "2026-08-08",
+    "items": [
+      {
+        "time": null,
+        "detail": "★조식",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "10:30-12:00",
+        "detail": "리히텐슈타인 파두츠 투어",
+        "location": null,
+        "place": "리히텐슈타인_파두츠(Vaduz)\n오스트리아와 스위스 사이 나라.",
+        "note": "파두츠 성 외관 관람(내부입장불가)\n[기념일 추천] Restaurant Bayerischer Hof (고급스러운 호수 전망 테라스)\n*파두츠->아펜첼이동 42km, 40M소요."
+      },
+      {
+        "time": null,
+        "detail": "★점심식사",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "13:00-15:30",
+        "detail": "1. 아펜첼(Appenzell) 동화마을 (30분구경)\n2. 아펜첼러 치즈(전통치즈공방 방문 제조과정, 시식)\n3. 전통맥주와 약주(알펜비터, 지역전통맥주)\n4. 에벤알프 케이블카(알프스풍경조망)",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": null,
+        "detail": "★저녁식사",
+        "location": null,
+        "place": "스위스 동북부 슈타인(Stein)에 위치.\n아펜첼러 치즈 공장\n(Appenzeller Schaukäserei)",
+        "note": "*주차장 : 마을 중심가 옆 'Parkplatz Brauereiplatz'이용 도보편리함. \n*점심식사: 아펜첼 전통치즈곁들인 슈니첼/스위스감자요리 뢰스티.\n*치즈 공장 방문.  Appenzeller Schaukaserei\n*아펜첼->린다우이동 54km, 1H소요."
+      }
+    ]
+  },
+  {
+    "date": "2026-08-09",
+    "items": [
+      {
+        "time": "08:00",
+        "detail": "★조식 및 체크아웃",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "09:00-12:00",
+        "detail": "린다우 -> 뮌헨 이동",
+        "location": "이동",
+        "place": "메어스부르크",
+        "note": "린다우 체크아웃, 렌터카 반납"
+      },
+      {
+        "time": null,
+        "detail": "★점심식사",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "14:00-19:30",
+        "detail": "린다우 -> 뮌헨 거쳐 프라하 복귀",
+        "location": null,
+        "place": null,
+        "note": "RegioJet 버스 예약 완료\n뚜껑있는 페트병음료, 샌드위치, 빵(깔끔한것), 젤리, 견과류, 쿠키,바나나, 씻은방울토마토 등."
+      },
+      {
+        "time": null,
+        "detail": "프라하 체크인",
+        "location": "프라하\n숙소 : Hilton Prague Atrium",
+        "place": null,
+        "note": null
+      },
+      {
+        "time": null,
+        "detail": "★저녁식사",
+        "location": null,
+        "place": null,
+        "note": null
+      }
+    ]
+  },
+  {
+    "date": "2026-08-10",
+    "items": [
+      {
+        "time": "8/11(화)",
+        "detail": null,
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "08:00",
+        "detail": "조식",
+        "location": null,
+        "place": null,
+        "note": null
+      },
+      {
+        "time": "16:00",
+        "detail": "호텔에서 프라하 공항으로 출발하기",
+        "location": "이동",
+        "place": null,
+        "note": "우버/볼트 : 25M-35M(500-700CZK)"
+      },
+      {
+        "time": "17:00",
+        "detail": "프라하공항 도착",
+        "location": null,
+        "place": "프라하->인천 2터미널",
+        "note": null
+      }
+    ]
+  }
+]

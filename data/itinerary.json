@@ -1,0 +1,334 @@
+[
+  {
+    "date": "2026-07-29",
+    "dateLabel": "7/29 (수)",
+    "city": "프라하",
+    "hotel": "Best Western Moran",
+    "events": [
+      {
+        "time": "13:00-15:00",
+        "title": "프라하 도착 및 숙소 체크인",
+        "place": "프라하",
+        "transport": "항공/우버",
+        "hotel": "Best Western Moran",
+        "note": "가족여행 시작"
+      },
+      {
+        "time": "15:00-19:00",
+        "title": "프라하 구시가지 투어 (천문시계, 구시광장)",
+        "place": "프라하 구시가지",
+        "transport": "도보",
+        "hotel": "Best Western Moran",
+        "note": "매 정시 시계 퍼포먼스 관람"
+      }
+    ],
+    "dayIndex": 1
+  },
+  {
+    "date": "2026-07-30",
+    "dateLabel": "7/30 (목)",
+    "city": "프라하 성",
+    "hotel": "Best Western Moran",
+    "events": [
+      {
+        "time": "09:00-13:00",
+        "title": "프라하 성 투어",
+        "place": "프라하 성",
+        "transport": "트램",
+        "hotel": "Best Western Moran",
+        "note": "성 종탑 전망대에서 시내 조망"
+      },
+      {
+        "time": "14:00-17:00",
+        "title": "카렐교 및 말라스트라나 산책",
+        "place": "카렐교",
+        "transport": "도보",
+        "hotel": "Best Western Moran",
+        "note": "까를교 및 보트 투어"
+      },
+      {
+        "time": "19:00-21:00",
+        "title": "야경 감상 및 저녁",
+        "place": "까를교 주변",
+        "transport": "도보",
+        "hotel": "Best Western Moran",
+        "note": "블타바 강변 레스토랑 예약 추천"
+      }
+    ],
+    "dayIndex": 2
+  },
+  {
+    "date": "2026-07-31",
+    "dateLabel": "7/31 (금)",
+    "city": "체스키 크룸로프",
+    "hotel": "Best Western Moran",
+    "events": [
+      {
+        "time": "09:00-20:00",
+        "title": "프라하 근교 (체스키 크룸로프) 투어",
+        "place": "체스키 크룸로프",
+        "transport": "차량",
+        "hotel": "Best Western Moran",
+        "note": "1일 투어 예약 완료 (마이리얼트립)"
+      }
+    ],
+    "dayIndex": 3
+  },
+  {
+    "date": "2026-08-01",
+    "dateLabel": "8/1 (토)",
+    "city": "독일 드레스덴/바슈타이",
+    "hotel": "Best Western Moran",
+    "events": [
+      {
+        "time": "08:00-20:00",
+        "title": "드레스덴 & 바스테이 투어",
+        "place": "독일 드레스덴/바슈타이",
+        "transport": "전용차량",
+        "hotel": "Best Western Moran",
+        "note": "1일 투어 예약 완료 - 바스테이 관광 포함"
+      }
+    ],
+    "dayIndex": 4
+  },
+  {
+    "date": "2026-08-02",
+    "dateLabel": "8/2 (일)",
+    "city": "뮌헨",
+    "hotel": "Hilton Munchen City",
+    "events": [
+      {
+        "time": "09:30-15:00",
+        "title": "프라하 -> 뮌헨 이동",
+        "place": "뮌헨",
+        "transport": "버스",
+        "hotel": "Hilton Munchen City",
+        "note": "RegioJet 버스 예약 완료"
+      },
+      {
+        "time": "16:00-18:00",
+        "title": "마리엔 광장 및 시내 중심가 투어",
+        "place": "뮌헨 시내",
+        "transport": "도보/U-Bahn",
+        "hotel": "Hilton Munchen City",
+        "note": null
+      }
+    ],
+    "dayIndex": 5
+  },
+  {
+    "date": "2026-08-03",
+    "dateLabel": "8/3 (월)",
+    "city": "퓌센",
+    "hotel": "Hilton Munchen City",
+    "events": [
+      {
+        "time": "09:00-18:00",
+        "title": "뮌헨 근교 (퓌센 노이슈반슈타인 성)",
+        "place": "퓌센",
+        "transport": "차량/기차",
+        "hotel": "Hilton Munchen City",
+        "note": "1일 투어 예약 완료"
+      }
+    ],
+    "dayIndex": 6
+  },
+  {
+    "date": "2026-08-04",
+    "dateLabel": "8/4 (화)",
+    "city": "BMW Welt",
+    "hotel": "Hilton Munchen City",
+    "events": [
+      {
+        "time": "11:00-12:00",
+        "title": "BMW 박물관 & 벨트 투어",
+        "place": "BMW Welt",
+        "transport": "U-Bahn",
+        "hotel": "Hilton Munchen City",
+        "note": "[BMW 박물관 예약 완료] https://www.bmw-welt.com/en/experience/bmw_museum.html"
+      },
+      {
+        "time": "14:00-17:00",
+        "title": "올림픽 공원 및 주변 산책",
+        "place": "올림픽 공원",
+        "transport": "도보",
+        "hotel": "Hilton Munchen City",
+        "note": null
+      }
+    ],
+    "dayIndex": 7
+  },
+  {
+    "date": "2026-08-05",
+    "dateLabel": "8/5 (수)",
+    "city": "린다우",
+    "hotel": "Air BnB Langenweg 33, Lindau",
+    "events": [
+      {
+        "time": "09:00-12:00",
+        "title": "뮌헨 -> 린다우 이동",
+        "place": "린다우",
+        "transport": "차량",
+        "hotel": "Air BnB Langenweg 33, Lindau",
+        "note": "렌터카(Europcar) 예약완료, 에어비앤비 체크인"
+      },
+      {
+        "time": "14:00-17:00",
+        "title": "린다우 섬 항구 및 구시가지 산책",
+        "place": "린다우 섬",
+        "transport": "도보",
+        "hotel": "Air BnB Langenweg 33, Lindau",
+        "note": "사자상, 등대 등 사진 촬영 / [전망 맛집] Restaurant Reutemann (항구/사자상 조망 테라스)"
+      },
+      {
+        "time": "21:00-23:00",
+        "title": "브레겐츠 페스티벌 무대 관람 (라 트라비아타)",
+        "place": "Seebühne",
+        "transport": "차량",
+        "hotel": "Air BnB Langenweg 33, Lindau",
+        "note": "[공연 예약 완료] https://bregenzerfestspiele.com/"
+      }
+    ],
+    "dayIndex": 8
+  },
+  {
+    "date": "2026-08-06",
+    "dateLabel": "8/6 (목)",
+    "city": "린다우 항구",
+    "hotel": "Air BnB Langenweg 33, Lindau",
+    "events": [
+      {
+        "time": "10:00-12:00",
+        "title": "린다우 항구 및 선셋 크루즈 예약 확인",
+        "place": "린다우 항구",
+        "transport": "도보",
+        "hotel": "Air BnB Langenweg 33, Lindau",
+        "note": "[선셋크루즈 예약] https://shop.bsb.de/ / [일몰 맛집] EIL.GUT.HALLE (항구 옆 일몰 감상하기 좋은 야외 좌석)"
+      },
+      {
+        "time": "14:00-16:30",
+        "title": "팬더산(Pfänder) 케이블카 전망",
+        "place": "브레겐츠",
+        "transport": "차량",
+        "hotel": "Air BnB Langenweg 33, Lindau",
+        "note": "[팬더 케이블카] https://www.pfaenderbahn.at/en/ / [추천] Berghaus Pfänder (호수 전체 조망 테라스 식사)"
+      }
+    ],
+    "dayIndex": 9
+  },
+  {
+    "date": "2026-08-07",
+    "dateLabel": "8/7 (금)",
+    "city": "취리히 킬히베르크",
+    "hotel": "Air BnB Langenweg 33, Lindau",
+    "events": [
+      {
+        "time": "12:00-14:00",
+        "title": "린트 홈 오브 초콜릿 박물관",
+        "place": "취리히 킬히베르크",
+        "transport": "차량",
+        "hotel": "Air BnB Langenweg 33, Lindau",
+        "note": "[린트 초콜릿 예약 완료] https://tickets.lindt-home-of-chocolate.com/ (사전예약 필수)"
+      },
+      {
+        "time": "14:30-17:00",
+        "title": "취리히 시내 투어",
+        "place": "취리히",
+        "transport": "도보",
+        "hotel": "Air BnB Langenweg 33, Lindau",
+        "note": "스위스 비네트 구매 필요 / [저녁 추천] Valentin Wine Dining (분위기 좋은 와인 다이닝)"
+      }
+    ],
+    "dayIndex": 10
+  },
+  {
+    "date": "2026-08-08",
+    "dateLabel": "8/8 (토)",
+    "city": "파두츠",
+    "hotel": "Air BnB Langenweg 33, Lindau",
+    "events": [
+      {
+        "time": "10:30-12:30",
+        "title": "리히텐슈타인 파두츠 투어",
+        "place": "파두츠",
+        "transport": "차량",
+        "hotel": "Air BnB Langenweg 33, Lindau",
+        "note": "파두츠 성 외관 관람 / [기념일 추천] Restaurant Bayerischer Hof (고급스러운 호수 전망 테라스)"
+      },
+      {
+        "time": "13:00-15:30",
+        "title": "아펜첼(Appenzell) 동화마을",
+        "place": "아펜첼",
+        "transport": "차량",
+        "hotel": "Air BnB Langenweg 33, Lindau",
+        "note": "치즈 공장 방문"
+      }
+    ],
+    "dayIndex": 11
+  },
+  {
+    "date": "2026-08-09",
+    "dateLabel": "8/9 (일)",
+    "city": "메어스부르크",
+    "hotel": "Hilton Prague Atrium",
+    "events": [
+      {
+        "time": "09:00-12:00",
+        "title": "린다우 -> 뮌헨 이동",
+        "place": "메어스부르크",
+        "transport": "렌터카",
+        "hotel": "Hilton Prague Atrium",
+        "note": "린다우 체크아웃, 렌터카 반납"
+      },
+      {
+        "time": "14:00-19:30",
+        "title": "린다우 -> 뮌헨 거쳐 프라하 복귀",
+        "place": "프라하",
+        "transport": "차량/기차",
+        "hotel": "Hilton Prague Atrium",
+        "note": "RegioJet 버스 예약 완료"
+      }
+    ],
+    "dayIndex": 12
+  },
+  {
+    "date": "2026-08-10",
+    "dateLabel": "8/10 (월)",
+    "city": "프라하 공항",
+    "hotel": "Hilton Prague Atrium",
+    "events": [
+      {
+        "time": "09:00-11:00",
+        "title": "프라하 공항 이동 및 출국",
+        "place": "프라하 공항",
+        "transport": "우버",
+        "hotel": "Hilton Prague Atrium",
+        "note": "가족여행 종료"
+      }
+    ],
+    "dayIndex": 13
+  },
+  {
+    "date": "2026-08-11",
+    "dateLabel": "8/11 (화)",
+    "city": "인천",
+    "hotel": null,
+    "events": [
+      {
+        "time": "17:00",
+        "title": "프라하 공항 도착",
+        "place": "프라하 공항",
+        "transport": null,
+        "note": "프라하 -> 인천 2터미널 탑승"
+      },
+      {
+        "time": "19:05-13:20(+1일)",
+        "title": "인천 2터미널 도착",
+        "place": "인천공항",
+        "transport": "항공",
+        "note": "가족여행 종료"
+      }
+    ],
+    "dayIndex": 14
+  }
+]
