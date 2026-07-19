@@ -2,36 +2,884 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>2026 유럽여행 · 3인 가족</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>EuroTrip 2026｜가족 유럽여행 대시보드</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/tabler-icons-outline.min.css">
-<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
+<style>
+:root{
+  --ink:#182233;
+  --ink-2:#233047;
+  --paper:#FBF8F1;
+  --paper-2:#F2EDE1;
+  --line:#DED5C0;
+  --gold:#C99A3E;
+  --gold-deep:#9C7325;
+  --moss:#4B6650;
+  --moss-2:#6C8A6F;
+  --brick:#B0503A;
+  --text:#1E2430;
+  --muted:#6B7280;
+  --white:#FFFFFF;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--paper);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:84px;
+  min-height:100vh;
+}
+.font-display{font-family:'Fraunces',serif;}
+.font-mono{font-family:'IBM Plex Mono',monospace;}
+
+/* ===== Top bar ===== */
+.topbar{
+  position:sticky; top:0; z-index:40;
+  background:var(--ink);
+  color:var(--paper);
+  padding:14px 18px 12px;
+  box-shadow:0 2px 10px rgba(0,0,0,.18);
+}
+.topbar .eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--gold); opacity:.9;
+}
+.topbar h1{
+  font-family:'Fraunces',serif; font-weight:600; font-size:20px; margin:2px 0 0;
+  letter-spacing:.01em;
+}
+
+/* ===== Bottom nav ===== */
+.bottomnav{
+  position:fixed; left:0; right:0; bottom:0; z-index:50;
+  background:var(--ink);
+  border-top:1px solid rgba(255,255,255,.08);
+  display:flex;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.navbtn{
+  flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:3px; padding:9px 2px 8px; background:none; border:none; cursor:pointer;
+  color:#8B93A6; font-family:'Inter',sans-serif; font-size:10.5px; font-weight:600;
+  transition:color .15s;
+}
+.navbtn svg{width:20px;height:20px; stroke:#8B93A6; transition:stroke .15s;}
+.navbtn.active{color:var(--gold);}
+.navbtn.active svg{stroke:var(--gold);}
+
+/* ===== Tabs ===== */
+.tab{display:none; padding:16px 14px 10px; max-width:640px; margin:0 auto;}
+.tab.active{display:block; animation:fadein .25s ease;}
+@keyframes fadein{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);}}
+
+/* ===== Cards ===== */
+.card{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:14px;
+  box-shadow:0 1px 2px rgba(24,34,51,.04);
+}
+.section-label{
+  font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--gold-deep); font-weight:600;
+  display:flex; align-items:center; gap:8px; margin-bottom:10px;
+}
+.section-label::after{content:''; flex:1; height:1px; background:var(--line);}
+
+/* ===== Dashboard: progress ===== */
+.progress-wrap{background:var(--paper-2); border-radius:999px; height:10px; overflow:hidden;}
+.progress-bar{height:100%; background:linear-gradient(90deg,var(--moss),var(--gold)); border-radius:999px; transition:width .6s ease;}
+
+/* ===== Route line (signature element) ===== */
+.routeline-scroll{overflow-x:auto; padding:6px 2px 10px; -webkit-overflow-scrolling:touch;}
+.routeline-scroll::-webkit-scrollbar{height:5px;}
+.routeline-scroll::-webkit-scrollbar-thumb{background:var(--line); border-radius:4px;}
+
+/* ===== Quick links ===== */
+.quicklink{
+  display:flex; align-items:center; gap:10px;
+  background:var(--paper-2); border:1px solid var(--line); border-radius:12px;
+  padding:12px; font-size:13px; font-weight:600; color:var(--ink-2);
+  text-decoration:none; cursor:pointer;
+}
+.quicklink svg{width:18px;height:18px; stroke:var(--brick); flex-shrink:0;}
+
+/* ===== Timeline ===== */
+.daychip{
+  flex-shrink:0; padding:9px 13px; border-radius:11px; border:1px solid var(--line);
+  background:var(--white); cursor:pointer; text-align:center; min-width:58px;
+}
+.daychip .d{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); font-weight:600;}
+.daychip .c{font-size:12px; font-weight:700; margin-top:2px;}
+.daychip.active{background:var(--ink); border-color:var(--ink);}
+.daychip.active .d{color:var(--gold);}
+.daychip.active .c{color:var(--paper);}
+.daychip.today{box-shadow:0 0 0 2px var(--gold);}
+
+.tl-period{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--moss); font-weight:700; margin:18px 0 8px 2px; display:flex; align-items:center; gap:8px;}
+.tl-period::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--moss);}
+
+.tl-card{
+  background:var(--white); border:1px solid var(--line); border-left:4px solid var(--gold);
+  border-radius:10px; padding:12px 13px; margin-bottom:9px; cursor:grab;
+  position:relative;
+}
+.tl-card:active{cursor:grabbing;}
+.tl-card.tag-이동{border-left-color:#6C8A6F;}
+.tl-card.tag-관광{border-left-color:#C99A3E;}
+.tl-card.tag-식사{border-left-color:#B0503A;}
+.tl-card.tag-숙소{border-left-color:#5B6B8C;}
+.tl-card .tl-top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px;}
+.tl-card .tl-time{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); font-weight:600;}
+.tl-card .tl-title{font-weight:700; font-size:14.5px; margin-top:2px; line-height:1.35;}
+.tl-card .tl-place{font-size:12px; color:var(--muted); margin-top:3px;}
+.tl-card .tl-tip{font-size:12px; color:var(--ink-2); margin-top:7px; background:var(--paper-2); border-radius:8px; padding:8px 9px; line-height:1.5;}
+.tl-tag-pill{font-size:10px; font-weight:700; padding:2px 7px; border-radius:999px; background:var(--paper-2); color:var(--ink-2); white-space:nowrap;}
+.tl-map-btn{width:30px;height:30px; border-radius:50%; border:1px solid var(--line); background:var(--paper-2); display:flex; align-items:center; justify-content:center; flex-shrink:0; cursor:pointer;}
+.tl-map-btn svg{width:15px;height:15px; stroke:var(--brick);}
+.drag-handle{color:var(--line); font-size:13px; letter-spacing:2px; margin-right:4px; user-select:none;}
+
+.pool-zone{background:var(--paper-2); border:1.5px dashed var(--line); border-radius:12px; padding:12px; min-height:60px;}
+.pool-card{background:var(--white); border:1px solid var(--line); border-radius:9px; padding:10px 11px; margin-bottom:8px; cursor:grab; font-size:12.5px;}
+.pool-card b{display:block; font-size:13.5px; margin-bottom:2px;}
+.sortable-ghost{opacity:.35;}
+.sortable-drag{box-shadow:0 6px 18px rgba(0,0,0,.15);}
+
+/* ===== Checklist ===== */
+.chk-cat{margin-bottom:16px;}
+.chk-cat-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;}
+.chk-cat-head h3{font-family:'Fraunces',serif; font-size:15px; font-weight:600; margin:0;}
+.chk-progress{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted);}
+.chk-item{display:flex; align-items:center; gap:10px; padding:10px 4px; border-bottom:1px solid var(--paper-2);}
+.chk-item:last-child{border-bottom:none;}
+.chk-box{width:21px;height:21px; border-radius:6px; border:2px solid var(--line); flex-shrink:0; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:.15s;}
+.chk-box.on{background:var(--moss); border-color:var(--moss);}
+.chk-box svg{width:13px;height:13px; stroke:white; opacity:0;}
+.chk-box.on svg{opacity:1;}
+.chk-label{font-size:14px; flex:1; cursor:pointer;}
+.chk-label.done{text-decoration:line-through; color:var(--muted); opacity:.65;}
+
+/* ===== Memo/Shopping ===== */
+textarea#memoInput{
+  width:100%; border:1px solid var(--line); border-radius:10px; padding:11px 12px;
+  font-family:'Inter',sans-serif; font-size:14px; resize:none; min-height:60px; background:var(--paper-2);
+}
+.memo-item{background:var(--paper-2); border-radius:10px; padding:10px 12px; margin-bottom:8px; font-size:13.5px; position:relative;}
+.memo-item .ts{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted); margin-bottom:3px;}
+.memo-del{position:absolute; top:8px; right:10px; color:var(--brick); font-size:16px; cursor:pointer; opacity:.55;}
+.shop-city{font-weight:700; font-size:13px; margin:14px 0 6px; color:var(--ink-2);}
+.shop-country-tag{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--gold-deep); background:#FBF1DD; padding:2px 7px; border-radius:6px; margin-right:6px;}
+
+.btn-primary{background:var(--ink); color:var(--paper); border:none; border-radius:10px; padding:10px 16px; font-weight:700; font-size:13px; cursor:pointer;}
+.badge{display:inline-block; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:999px;}
+.badge-done{background:#E4EEE4; color:var(--moss);}
+.badge-pending{background:#F6E8DC; color:var(--brick);}
+</style>
 </head>
 <body>
 
-<header class="topbar">
-  <div class="topbar-row">
-    <div>
-      <p class="eyebrow">Europe 2026 · 3인 가족</p>
-      <h1 id="topbarTitle">홈</h1>
+<!-- ================= TOP BAR ================= -->
+<div class="topbar">
+  <div class="eyebrow" id="topEyebrow">EUROTRIP 2026 · 3인 가족 여정</div>
+  <h1 id="topTitle">종합 대시보드</h1>
+</div>
+
+<!-- ================= DASHBOARD ================= -->
+<div class="tab active" id="tab-dashboard">
+
+  <div class="card">
+    <div class="section-label">D-DAY & 진행률</div>
+    <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:10px;">
+      <div class="font-display" id="ddayText" style="font-size:34px; font-weight:700; color:var(--ink);">D-9</div>
+      <div style="font-size:12.5px; color:var(--muted);" id="ddaySub">2026.07.29 (수) 출발까지</div>
     </div>
-    <button id="settingsBtn" class="icon-btn" aria-label="설정"><i class="ti ti-settings"></i></button>
+    <div class="progress-wrap"><div class="progress-bar" id="progressBar" style="width:0%;"></div></div>
+    <div style="display:flex; justify-content:space-between; margin-top:6px; font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--muted);">
+      <span>7/29 프라하 출발</span><span id="progressLabel">0 / 14 일차</span><span>8/11 인천 도착</span>
+    </div>
   </div>
-</header>
 
-<main id="app" class="app"></main>
+  <div class="card">
+    <div class="section-label">여정 노선도</div>
+    <div class="routeline-scroll"><svg id="routeSvg" height="108"></svg></div>
+  </div>
 
-<nav class="navbar">
-  <button class="nav-item" data-view="home"><i class="ti ti-home"></i><span>홈</span></button>
-  <button class="nav-item" data-view="itinerary"><i class="ti ti-calendar"></i><span>일정</span></button>
-  <button class="nav-item" data-view="reservations"><i class="ti ti-ticket"></i><span>예약</span></button>
-  <button class="nav-item" data-view="explore"><i class="ti ti-map-pin"></i><span>맛집·쇼핑</span></button>
-  <button class="nav-item" data-view="checklist"><i class="ti ti-checklist"></i><span>체크</span></button>
-  <button class="nav-item" data-view="memo"><i class="ti ti-notebook"></i><span>메모</span></button>
-</nav>
+  <div class="card">
+    <div class="section-label">오늘의 숙소 스냅샷</div>
+    <div id="stayCard"></div>
+  </div>
 
-<script src="js/app.js"></script>
+  <div class="card">
+    <div class="section-label">긴급 링크 바로가기</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px;">
+      <div class="quicklink" onclick="openModal('여권 사본','가족 3인 여권 사본 이미지를 클라우드(구글포토/드라이브)에 미리 업로드해두세요. 분실 시 대사관/영사관 재발급에 필요합니다.')">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
+        여권 사본
+      </div>
+      <div class="quicklink" onclick="openModal('여행자보험','보험증서 PDF·비상연락처가 담긴 클라우드 링크를 여기에 연결하세요. 사고/도난 시 현지어 안내문도 함께 저장해두면 좋습니다.')">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/></svg>
+        여행자보험
+      </div>
+      <div class="quicklink" onclick="openModal('긴급 연락처','🇨🇿 체코 통합 응급 112 · 🇩🇪 독일 통합 응급 112 · 🇨🇭 스위스 응급 112 / 144(구급)\n주프라하 대한민국 대사관: +420-234-090-411\n주독일 대사관(뮌헨 총영사관): +49-89-5827930')">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.5a1 1 0 011 .8l1 4a1 1 0 01-.3 1L7.5 10a12 12 0 006.5 6.5l1.2-1.7a1 1 0 011-.3l4 1a1 1 0 01.8 1V19a2 2 0 01-2 2h-1C10 21 3 14 3 6V5z"/></svg>
+        긴급 연락처
+      </div>
+      <div class="quicklink" onclick="switchTab('checklist')">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        준비물 체크
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-label">환율 메모</div>
+    <div style="font-size:12.5px; color:var(--ink-2); line-height:1.7;" class="font-mono">
+      1 CZK(체코 코루나) ≈ 60원 · 1 EUR ≈ 1,700원 · 1 CHF(스위스 프랑) ≈ 1,920원<br>
+      <span style="color:var(--muted);">※ 계산 편의를 위한 기준 환율이며 실제 결제 시 환율과 다를 수 있습니다.</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ================= TIMELINE ================= -->
+<div class="tab" id="tab-timeline">
+  <div style="display:flex; gap:8px; overflow-x:auto; padding:2px 2px 12px; -webkit-overflow-scrolling:touch;" id="dayChips"></div>
+  <div id="timelineBody"></div>
+
+  <div style="margin-top:20px;">
+    <div class="section-label">추천 스팟 풀 (드래그해서 일정에 추가)</div>
+    <div class="pool-zone" id="poolZone"></div>
+  </div>
+</div>
+
+<!-- ================= CHECKLIST ================= -->
+<div class="tab" id="tab-checklist">
+  <div class="card" style="margin-bottom:16px;">
+    <div class="section-label">전체 준비 현황</div>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <div class="font-display" id="chkOverallPct" style="font-size:30px; font-weight:700;">0%</div>
+      <div class="progress-wrap" style="flex:1;"><div class="progress-bar" id="chkOverallBar" style="width:0%;"></div></div>
+    </div>
+    <div style="font-size:11.5px; color:var(--muted); margin-top:6px;">가족 구성원과 이 화면을 함께 보며 체크하세요 (이 기기에 저장됩니다)</div>
+  </div>
+  <div id="checklistBody"></div>
+</div>
+
+<!-- ================= MEMO & SHOPPING ================= -->
+<div class="tab" id="tab-memo">
+  <div class="card">
+    <div class="section-label">현지 퀵 메모</div>
+    <textarea id="memoInput" placeholder="가이드 팁, 주차장 층수, 즉석 가계부 등을 적어두세요…"></textarea>
+    <div style="text-align:right; margin-top:8px;"><button class="btn-primary" onclick="addMemo()">메모 저장</button></div>
+    <div id="memoList" style="margin-top:12px;"></div>
+  </div>
+
+  <div class="card">
+    <div class="section-label">쇼핑 리스트 북마크</div>
+    <div id="shoppingBody"></div>
+  </div>
+</div>
+
+<!-- ================= BOTTOM NAV ================= -->
+<div class="bottomnav">
+  <button class="navbtn active" data-tab="dashboard" onclick="switchTab('dashboard')">
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+    대시보드
+  </button>
+  <button class="navbtn" data-tab="timeline" onclick="switchTab('timeline')">
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+    타임라인
+  </button>
+  <button class="navbtn" data-tab="checklist" onclick="switchTab('checklist')">
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    체크리스트
+  </button>
+  <button class="navbtn" data-tab="memo" onclick="switchTab('memo')">
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.4-9.4a2 2 0 112.8 2.8L11 17l-4 1 1-4 9.6-9.4z"/></svg>
+    메모/쇼핑
+  </button>
+</div>
+
+<!-- ================= MODAL ================= -->
+<div id="modalBg" style="display:none; position:fixed; inset:0; background:rgba(24,34,51,.55); z-index:100; align-items:flex-end; justify-content:center;" onclick="if(event.target===this)closeModal()">
+  <div style="background:var(--paper); width:100%; max-width:640px; border-radius:18px 18px 0 0; padding:22px 20px calc(22px + env(safe-area-inset-bottom));">
+    <div class="font-display" id="modalTitle" style="font-size:18px; font-weight:700; margin-bottom:10px;"></div>
+    <div id="modalBody" style="font-size:13.5px; line-height:1.7; white-space:pre-line; color:var(--ink-2);"></div>
+    <button class="btn-primary" style="width:100%; margin-top:16px;" onclick="closeModal()">닫기</button>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+   DATA — 2026_유럽여행_일정_ING.xlsx 원본 데이터 이관
+===================================================================== */
+const TRIP = [
+{id:'d01', date:'2026-07-29', label:'7/29(수)', city:'프라하', country:'체코', stay:'Best Western Moran', checkin:true,
+ blocks:[
+  {period:'오후', tag:'이동', title:'프라하 도착 · 숙소 체크인', time:'13:00–15:00', place:'공항 → Best Western Moran', tip:'공항 터미널 앞 정류장에서 100번 버스 → 종점 Zličín역 하차 → 지하철 B선(노란색) 환승 → Karlovo náměstí역 하차 후 도보 2~3분(약 50분). 90분 대중교통 티켓 약 50 CZK.', map:'Best Western Premier Kings Court Prague'},
+  {period:'오후', tag:'관광', title:'프라하 구시가지 투어', time:'15:00–19:00', place:'구시가지(천문시계·구시광장)', tip:'천문시계탑은 매 정시 퍼포먼스. 전망대는 9시~21시, 300/200 CZK.', map:'Prague Astronomical Clock'},
+  {period:'저녁', tag:'식사', title:'★ 저녁식사', time:'20:00', place:'프라하참조 풀에서 선택', tip:'댄싱하우스 야경 산책 코스와 묶어 Ginger & Fred 추천(20시 전후 예약 마감 잦음).', map:'Dancing House Prague'},
+ ]},
+{id:'d02', date:'2026-07-30', label:'7/30(목)', city:'프라하', country:'체코', stay:'Best Western Moran',
+ blocks:[
+  {period:'아침', tag:'식사', title:'★ 조식', time:'07:30', place:'숙소', tip:'', map:''},
+  {period:'오전', tag:'관광', title:'프라하 성 투어', time:'09:00–13:00', place:'프라하 성', tip:'성 종탑 전망대에서 시내 조망. 트램 이용.', map:'Prague Castle'},
+  {period:'오후', tag:'식사', title:'★ 점심식사', time:'13:00', place:'프라하 성 주변', tip:'', map:''},
+  {period:'오후', tag:'관광', title:'카렐교 & 말라스트라나 산책', time:'14:00–17:00', place:'카렐교', tip:'도보 이동, 보트 투어도 가능.', map:'Charles Bridge Prague'},
+  {period:'저녁', tag:'식사', title:'★ 저녁식사 · 야경 산책', time:'19:00–21:00', place:'블타바 강변', tip:'강변 레스토랑 사전 예약 추천.', map:'Vltava riverside Prague'},
+ ]},
+{id:'d03', date:'2026-07-31', label:'7/31(금)', city:'체스키크룸로프', country:'체코', stay:'Best Western Moran(당일투어)',
+ blocks:[
+  {period:'아침', tag:'식사', title:'★ 조식', time:'07:00', place:'숙소', tip:'', map:''},
+  {period:'오전', tag:'관광', title:'체스키 크룸로프 당일투어', time:'09:00–18:00', place:'체스키 크룸로프', tip:'버스 약 2시간30분 이동, 마이리얼트립 예약 완료.', map:'Český Krumlov'},
+  {period:'오후', tag:'식사', title:'★ 점심 · 자유시간', time:'12:00–14:00', place:'마을중심부 / 강가', tip:'보헤미안 전통 립(BBQ), 굴라시, 꼴레뇨(체코식 족발), 에겐베르크 양조장 맥주 추천.', map:'Český Krumlov old town restaurants'},
+  {period:'저녁', tag:'식사', title:'★ 저녁식사(예약필수)', time:'19:00', place:'투어 가이드 추천 현지 식당', tip:'스비치코바(크림소스 소고기), 흘레비치키(체코식 오픈 샌드위치 타파스) 추천.', map:''},
+ ]},
+{id:'d04', date:'2026-08-01', label:'8/1(토)', city:'드레스덴', country:'독일', stay:'Best Western Moran(당일투어)',
+ blocks:[
+  {period:'아침', tag:'식사', title:'조식', time:'07:00', place:'숙소', tip:'', map:''},
+  {period:'오전', tag:'관광', title:'드레스덴 & 바스테이 투어', time:'08:00–19:00', place:'드레스덴 / 바스테이', tip:'전용차량 1.5~2시간 이동, 예약 완료(바스테이 관광 포함).', map:'Bastei Germany'},
+  {period:'오후', tag:'식사', title:'★ 점심 · 슈니첼&학센', time:'12:00–13:30', place:'Augustiner an der Frauenkirche', tip:'프라우엔 교회 바로 옆, 짜지 않게 조리한다는 후기 다수. 헬레스 맥주 추천.', map:'Augustiner an der Frauenkirche Dresden'},
+  {period:'오후', tag:'식사', title:'바스테이 간식', time:'~17:00', place:'바스테이', tip:'스낵/샌드위치 위주 간단 간식.', map:''},
+  {period:'저녁', tag:'식사', title:'★ 저녁식사', time:'19:30', place:'프라하 복귀 후', tip:'', map:''},
+ ]},
+{id:'d05', date:'2026-08-02', label:'8/2(일)', city:'뮌헨', country:'독일', stay:'Hilton Munchen City', checkin:true, checkout:'Best Western Moran',
+ blocks:[
+  {period:'아침', tag:'식사', title:'★ 조식 · 짐싸기 · 체크아웃', time:'07:00–08:40', place:'Best Western Moran', tip:'', map:''},
+  {period:'오전', tag:'이동', title:'플로렌츠 버스터미널 이동', time:'09:00', place:'UAN Florenc', tip:'볼트/우버 약 10분(150~250 CZK). 지하철 B·C선 환승역과 직결.', map:'UAN Florenc bus terminal Prague'},
+  {period:'오전', tag:'이동', title:'프라하 → 뮌헨 버스 이동', time:'09:30–14:15', place:'RegioJet', tip:'노란색 버스, 무료 와이파이·핫음료·콘센트·화장실 완비. 예약 완료. 점심은 간단히 챙기기.', map:'RegioJet'},
+  {period:'오후', tag:'관광', title:'마리엔 광장 · 시내 중심가 투어', time:'16:00–18:00', place:'뮌헨 시내', tip:'도보/U-Bahn 이용.', map:'Marienplatz Munich'},
+  {period:'저녁', tag:'식사', title:'★ 저녁식사', time:'19:00', place:'뮌헨 시내', tip:'', map:''},
+ ]},
+{id:'d06', date:'2026-08-03', label:'8/3(월)', city:'퓌센', country:'독일', stay:'Hilton Munchen City',
+ blocks:[
+  {period:'아침', tag:'식사', title:'★ 조식', time:'07:00', place:'숙소', tip:'', map:''},
+  {period:'오전', tag:'관광', title:'퓌센 · 노이슈반슈타인 성 투어', time:'09:00–18:00', place:'노이슈반슈타인 성', tip:'차량/기차 이동, 13:55 입장 예약 완료.', map:'Neuschwanstein Castle'},
+  {period:'오후', tag:'식사', title:'★ 점심 · 저녁식사', time:'13:00 / 19:00', place:'퓌센', tip:'성 올라가는 길목 노점의 콰르크벨헨(치즈 도넛) 간식 추천.', map:''},
+ ]},
+{id:'d07', date:'2026-08-04', label:'8/4(화)', city:'뮌헨', country:'독일', stay:'Hilton Munchen City',
+ blocks:[
+  {period:'아침', tag:'식사', title:'★ 조식', time:'08:00', place:'숙소', tip:'', map:''},
+  {period:'오전', tag:'관광', title:'BMW 박물관 & 벨트 투어', time:'11:00–12:00', place:'BMW Welt', tip:'예약 완료. U-Bahn 이용. 벨트 내 레스토랑: 바바리에 바이 케퍼 / 쿠퍼스 가든 / M1 비스트로.', map:'BMW Welt Munich'},
+  {period:'오후', tag:'식사', title:'★ 점심식사', time:'12:30', place:'BMW Welt 인근', tip:'', map:''},
+  {period:'오후', tag:'관광', title:'올림픽 공원 산책', time:'14:00–17:00', place:'올림피아파크', tip:'올림피아 암(비어가든) 또는 안 티엔(베트남 쌀국수) 추천.', map:'Olympiapark Munich'},
+  {period:'저녁', tag:'식사', title:'★ 저녁식사', time:'19:00', place:'뮌헨', tip:'', map:''},
+ ]},
+{id:'d08', date:'2026-08-05', label:'8/5(수)', city:'린다우', country:'독일', stay:'Air BnB Langenweg 33, Lindau', checkin:true, checkout:'Hilton Munchen City',
+ blocks:[
+  {period:'아침', tag:'식사', title:'★ 조식 · 짐싸기 · 체크아웃', time:'07:30', place:'Hilton Munchen City', tip:'', map:''},
+  {period:'오전', tag:'이동', title:'뮌헨 → 린다우 이동', time:'09:00–12:00', place:'렌터카(Europcar)', tip:'예약 완료. 에어비앤비 체크인.', map:'Lindau Island'},
+  {period:'오후', tag:'식사', title:'★ 점심식사', time:'13:00', place:'린다우', tip:'', map:''},
+  {period:'오후', tag:'관광', title:'린다우 섬 항구 · 구시가지 산책', time:'14:00–17:00', place:'린다우 섬', tip:'사자상·등대 포토스팟. 전망 맛집 Restaurant Reutemann(항구/사자상 조망 테라스).', map:'Lindau Harbour lion statue'},
+  {period:'저녁', tag:'식사', title:'★ 저녁식사', time:'19:00', place:'린다우', tip:'', map:''},
+  {period:'밤', tag:'관광', title:'브레겐츠 페스티벌 · 라 트라비아타', time:'21:00–23:00', place:'Seebühne(보덴호수 위 무대)', tip:'공연 예약 완료.', map:'Bregenzer Festspiele Seebühne'},
+ ]},
+{id:'d09', date:'2026-08-06', label:'8/6(목)', city:'브레겐츠', country:'오스트리아', stay:'Air BnB Langenweg 33, Lindau',
+ blocks:[
+  {period:'아침', tag:'식사', title:'★ 조식', time:'08:00', place:'숙소', tip:'', map:''},
+  {period:'오전', tag:'관광', title:'린다우 항구 · 선셋크루즈 예약확인', time:'10:00–12:00', place:'린다우 항구', tip:'일몰 맛집 EIL.GUT.HALLE(항구 옆 야외 좌석).', map:'Lindau Harbour'},
+  {period:'오후', tag:'식사', title:'★ 점심식사', time:'12:30', place:'린다우/브레겐츠', tip:'', map:''},
+  {period:'오후', tag:'관광', title:'팬더산(Pfänder) 케이블카 전망', time:'14:00–16:30', place:'브레겐츠', tip:'추천 Berghaus Pfänder(호수 전체 조망 테라스 식사).', map:'Pfänder cable car Bregenz'},
+  {period:'저녁', tag:'식사', title:'★ 저녁식사', time:'19:00', place:'린다우', tip:'', map:''},
+ ]},
+{id:'d10', date:'2026-08-07', label:'8/7(금)', city:'취리히', country:'스위스', stay:'Air BnB Langenweg 33, Lindau',
+ blocks:[
+  {period:'아침', tag:'식사', title:'★ 조식 or 브런치', time:'09:00', place:'숙소', tip:'', map:''},
+  {period:'오후', tag:'관광', title:'린트 홈 오브 초콜릿 박물관', time:'12:00–14:00', place:'취리히 킬히베르크', tip:'사전예약 필수, 예약 완료.', map:'Lindt Home of Chocolate'},
+  {period:'오후', tag:'관광', title:'취리히 시내 투어', time:'14:30–17:00', place:'취리히', tip:'스위스 비네트(고속도로 통행권) 구매 필요.', map:'Zurich old town'},
+  {period:'저녁', tag:'식사', title:'★ 저녁식사', time:'19:00', place:'Valentin Wine Dining', tip:'분위기 좋은 와인 다이닝 추천.', map:'Valentin Wine Dining Zurich'},
+ ]},
+{id:'d11', date:'2026-08-08', label:'8/8(토)', city:'파두츠 · 아펜첼', country:'리히텐슈타인 · 스위스', stay:'Air BnB Langenweg 33, Lindau',
+ blocks:[
+  {period:'아침', tag:'식사', title:'★ 조식', time:'08:30', place:'숙소', tip:'', map:''},
+  {period:'오전', tag:'관광', title:'리히텐슈타인 파두츠 투어', time:'10:30–12:30', place:'파두츠', tip:'파두츠 성 외관 관람(내부 입장 불가). 기념일 추천 Restaurant Bayerischer Hof(호수 전망 테라스).', map:'Vaduz Castle'},
+  {period:'오후', tag:'식사', title:'★ 점심식사', time:'12:30', place:'파두츠', tip:'', map:''},
+  {period:'오후', tag:'관광', title:'아펜첼 동화마을', time:'13:00–15:30', place:'아펜첼', tip:'아펜첼러 치즈 공방 견학·시식, 전통맥주(알펜비터), 에벤알프 케이블카.', map:'Appenzell village'},
+  {period:'저녁', tag:'식사', title:'★ 저녁식사', time:'19:00', place:'아펜첼 인근', tip:'전통 치즈 곁들인 슈니첼/뢰스티 추천.', map:''},
+ ]},
+{id:'d12', date:'2026-08-09', label:'8/9(일)', city:'프라하', country:'체코', stay:'Hilton Prague Atrium', checkin:true, checkout:'Air BnB Lindau',
+ blocks:[
+  {period:'아침', tag:'식사', title:'★ 조식 · 체크아웃', time:'08:00', place:'린다우 숙소', tip:'렌터카 반납.', map:''},
+  {period:'오전', tag:'이동', title:'린다우 → 뮌헨 이동', time:'09:00–12:00', place:'메어스부르크 경유', tip:'', map:''},
+  {period:'오후', tag:'식사', title:'★ 점심식사', time:'12:30', place:'이동 중', tip:'', map:''},
+  {period:'오후', tag:'이동', title:'뮌헨 경유 프라하 복귀', time:'14:00–19:30', place:'RegioJet', tip:'예약 완료. 뚜껑 있는 음료·샌드위치·견과류·바나나 등 간식 챙기기.', map:'RegioJet'},
+  {period:'저녁', tag:'식사', title:'★ 저녁식사', time:'20:00', place:'프라하', tip:'Hilton Prague Atrium 체크인.', map:''},
+ ]},
+{id:'d13', date:'2026-08-10', label:'8/10(월)', city:'프라하', country:'체코', stay:'Hilton Prague Atrium',
+ blocks:[
+  {period:'아침', tag:'식사', title:'★ 조식', time:'08:00', place:'숙소', tip:'', map:''},
+  {period:'오전', tag:'관광', title:'자유일정 · 기념품 쇼핑', time:'09:00–15:00', place:'하벨시장 · 팔라디움 백화점', tip:'마지막 프라하 자유시간. 아래 쇼핑 리스트 참고.', map:'Havelské tržiště market Prague'},
+  {period:'저녁', tag:'식사', title:'★ 마지막 만찬', time:'19:00', place:'그란 피에로 등', tip:'프라하참조 풀에서 특별한 곳으로 예약 추천.', map:''},
+ ]},
+{id:'d14', date:'2026-08-11', label:'8/11(화)', city:'프라하 → 인천', country:'귀국일', stay:'Hilton Prague Atrium(체크아웃)',
+ blocks:[
+  {period:'아침', tag:'식사', title:'조식', time:'08:00', place:'숙소', tip:'', map:''},
+  {period:'오후', tag:'이동', title:'호텔 → 프라하 공항', time:'16:00', place:'우버/볼트', tip:'약 25~35분 소요(500~700 CZK).', map:'Václav Havel Airport Prague'},
+  {period:'오후', tag:'이동', title:'공항 도착', time:'17:00', place:'프라하 공항', tip:'', map:''},
+  {period:'저녁', tag:'이동', title:'프라하 → 인천 출발', time:'19:05', place:'항공편', tip:'다음날(+1일) 13:20 인천 2터미널 도착 예정.', map:''},
+ ]},
+];
+
+const POOL = [
+ {city:'프라하', title:"Pork's Vodičkova", desc:'시그니처 꼴레뇨(479 CZK)+양파수프+감자전. 돼지기름으로 튀긴 감자전이 별미. 10월엔 야외테이블도 좋음.', map:"Pork's Vodičkova Prague"},
+ {city:'프라하', title:'Gran Fierro', desc:'프라하 최고 인기 아르헨티나 스테이크 전문점. 감각적 인테리어, 훌륭한 와인 리스트.', map:'Gran Fierro Prague'},
+ {city:'프라하', title:'Ginger & Fred', desc:'댄싱하우스 7층 파인다이닝. 블타바강·프라하성 야경 통유리 뷰. 20시 전후 예약 마감 잦음.', map:'Ginger and Fred restaurant Prague'},
+ {city:'프라하', title:"L'Osteria Národní", desc:'대형 화덕피자 반반(Half&Half), 생면 파스타. 예약 없이 약간 웨이팅.', map:"L'Osteria Národní Prague"},
+ {city:'프라하', title:"Sad Man's Tongue", desc:'빈티지 미국식 인테리어의 수제버거 맛집. 현금 결제만 가능.', map:"Sad Man's Tongue Prague"},
+ {city:'프라하', title:'Ekant Indian Restaurant', desc:'카를로보 나메스티 광장 옆 인도 요리. 매운맛 조절 가능, 한국인 입맛에 잘 맞음.', map:'Ekant Indian Restaurant Prague'},
+ {city:'프라하', title:'Lobkowicz Palace Restaurant & Café', desc:'프라하성에서 시내 전경 보며 차 한잔, 가이드 추천.', map:'Lobkowicz Palace Restaurant Prague'},
+ {city:'프라하', title:'Our Lady of Exile', desc:'스트라호프 수도원 전망대 근처, 수도원 맥주로 유명.', map:'Strahov Monastery viewpoint Prague'},
+ {city:'프라하', title:'Năm - Viet Kitchen', desc:'느끼할 때 생각나는 쌀국수 한 그릇.', map:'Nam Viet Kitchen Prague'},
+ {city:'프라하', title:'Vyšehradské hradby', desc:'프라하 일몰 명소, 성벽에서 보는 노을이 인상적.', map:'Vyšehrad walls Prague'},
+ {city:'프라하', title:'아르테 비앙카 빵집 & 카페', desc:'커피와 빵이 맛있는 베이커리 카페.', map:'Arte Bianca bakery Prague'},
+ {city:'체스키크룸로프', title:'구시가지 강가 식당가', desc:'보헤미안 전통 립, 굴라시, 꼴레뇨, 에겐베르크 로컬 양조장 맥주.', map:'Český Krumlov restaurants near river'},
+ {city:'드레스덴', title:'Augustiner an der Frauenkirche', desc:'슈바인학센·슈니첼, 짜지 않다는 후기 다수. 헬레스 생맥주 추천.', map:'Augustiner an der Frauenkirche Dresden'},
+ {city:'드레스덴', title:'Pulverturm', desc:'옛 화약탑 지하 개조 레스토랑, 한국어 메뉴판 제공. 작센식 자우어브라텐 추천.', map:'Pulverturm Dresden'},
+ {city:'드레스덴', title:'Gänsedieb', desc:'구시가지 맛집거리 위치. 신선한 샐러드 곁들인 슈니첼·수제소시지.', map:'Gänsedieb Dresden'},
+ {city:'뮌헨', title:'올림피아 암 (Olympia Alm)', desc:'뮌헨 최고지대 비어가든. 바이에른 소시지구이·슈니첼·생맥주.', map:'Olympia Alm Munich'},
+ {city:'뮌헨', title:'안 티엔 (Anh Tien)', desc:'BMW박물관 근처 인기 베트남 식당, 가성비 런치세트.', map:'Anh Tien restaurant Munich'},
+ {city:'린다우', title:'Restaurant Reutemann', desc:'린다우 항구·사자상 조망 테라스.', map:'Restaurant Reutemann Lindau'},
+ {city:'린다우', title:'EIL.GUT.HALLE', desc:'항구 옆 일몰 감상하기 좋은 야외 좌석.', map:'EIL.GUT.HALLE Lindau'},
+ {city:'브레겐츠', title:'Berghaus Pfänder', desc:'팬더산 정상, 호수 전체가 보이는 조망 테라스 식사.', map:'Berghaus Pfänder Bregenz'},
+ {city:'취리히', title:'Valentin Wine Dining', desc:'분위기 좋은 와인 다이닝.', map:'Valentin Wine Dining Zurich'},
+ {city:'파두츠', title:'Restaurant Bayerischer Hof', desc:'고급스러운 호수 전망 테라스, 기념일 추천.', map:'Restaurant Bayerischer Hof Vaduz'},
+ {city:'아펜첼', title:'Appenzeller Schaukäserei', desc:'전통 치즈 공방, 제조 과정 견학 및 시식.', map:'Appenzeller Schaukäserei'},
+];
+
+const SHOPPING = [
+ {country:'체코', city:'프라하', items:[
+   '마누팍투라(Manufaktura) 맥주 샴푸·핸드크림',
+   '보타니쿠스(Botanicus) 여왕의 팩 장미오일·수제비누',
+   '아포테카(Apoteka) 3분 마스크팩',
+   '마를렌카(Marlenka) 꿀 케이크',
+   '코로나다(Kolonada) 국민 웨하스',
+   '벌꿀주(Medovina)',
+   '베헤롭카(Becherovka) 허브 리큐르',
+   '체코 와인(보헤미아/모라비아)',
+   '마리오네트 나무인형',
+   '보헤미안 글라스/크리스탈',
+   '필스너 우르켈 캔맥주(마트, 1유로 미만)',
+   '가성비: Albert/Billa 마트·dm(코로나다 온천과자, 픽윅 과일티, 스튜던츠카 초콜릿, 인시아 핸드크림)',
+ ], loc:'추천 쇼핑지: 올드타운(구시가지), 하벨시장(전통시장), 프라하성 황금소로, 팔라디움 백화점, 파리쉬 쇼핑몰(명품)'},
+ {country:'체코', city:'체스키 크룸로프', items:[
+   '전통 보헤미안 진저브레드(Český Perník)',
+   '수제 꿀 비누·꿀 화장품·벌꿀주(메도비나)',
+   '에겐베르크(Eggenberg) 로컬 양조장 맥주',
+ ]},
+ {country:'독일', city:'드레스덴 & 바스테이', items:[
+   '마이센(Meissen) 국립 도자기',
+   '에르츠게비르게(Erzgebirge) 목공예품',
+   '드레스덴 슈톨렌("Dresdner Stollen" 인증마크 확인)',
+   '푼츠 몰케라이(Pfunds Molkerei) 유제품 — 세계에서 가장 아름다운 우유가게(기네스북)',
+   '바스테이 허브 리큐르(Kräuterlikör)',
+   '로컬 천연꿀 & 사과와인(Apfelwein)',
+   '작센 스위스 목재 마그넷·하이킹 굿즈',
+ ]},
+ {country:'독일', city:'뮌헨', items:[
+   '드럭스토어(dm/Rossmann): 바레아(Balea) 앰플·마스크팩',
+   '아요나(Ajona) 치약',
+   '발포 비타민(약 0.45유로)',
+   '알페신(Alpecin) 카페인 샴푸',
+   '쌍둥이칼(Zwilling)',
+   '독일 전통 맥주잔(호프브로이하우스)',
+   '하리보(Haribo) 젤리',
+   '리터 스포트(Ritter Sport) 초콜릿',
+ ]},
+ {country:'독일', city:'린다우', items:[
+   '드럭스토어(dm): 발레아 앰플·립밤, 카밀(Kamill) 핸드크림',
+   '린트(Lindt) 초콜릿',
+   '독일 꿀',
+   '하리보(Haribo) 젤리',
+   '과일 브랜디(슈냅스)',
+   '지역 와인',
+ ]},
+ {country:'독일', city:'퓌센 · 노이슈반슈타인', items:[
+   '독일 뻐꾸기시계(쿼츠 150~300€, 미니 50~100€, 택스리펀 10~12%)',
+   '알고이(Allgäu) 천연 치즈 & 벌꿀',
+   '콰르크벨헨(Quarkbällchen) 튀김도넛 — 꼭 먹어볼 것',
+   '엠오이칼(Em-eukal) 허브 목캔디',
+ ]},
+ {country:'독일', city:'BMW 박물관 & 벨트', items:[
+   'BMW 로고 티셔츠/후드티',
+   '서모 텀블러·보틀',
+   '우산(Puma 협업)',
+   '50.01유로 이상 구매 시 텍스리펀 서류 요청',
+ ]},
+];
+
+const CHECKLIST = [
+ {cat:'Basic Item', items:['여권','항공권','국제학생증','국제운전면허증','여권사본','여행자 보험','로밍']},
+ {cat:'Reservation', items:['렌터카','버스(프라하<->뮌헨)','드레스덴 투어','체스키크룸로프 투어','노이반슈타인성','린트초콜릿','BMW 박물관','브레겐트 오페라공연']},
+ {cat:'Payment Item', items:['트래블 월릿','유로','예비 카드']},
+ {cat:'Electric Item', items:['충전기','충전단자','멀티탭','보조배터리']},
+ {cat:'Sanitary', items:['세면도구','로션','렌즈','고무줄','손소독제','손소독티슈','인공눈물','립밤']},
+ {cat:'Sun Protect', items:['모자','선크림','선글라스','팔토시, 목토시']},
+ {cat:'Theft Protect', items:['소형열쇠','옷핀','복대','휴대폰 분실방지','슬링백']},
+ {cat:'Photo Item', items:['폴라로이드 카메라']},
+ {cat:'Clothes', items:['속옷','양말','바람막이','바지','티셔츠','손수건','후드','신발']},
+ {cat:'Medicine', items:['종합감기약','지사제','소화제','해열진통제','밴드','연고']},
+ {cat:'etc', items:['지퍼백/비닐봉지','동전지갑','필기도구','안경']},
+ {cat:'Korean food', items:['라면','누릉지','생수','과자']},
+];
+
+/* =====================================================================
+   STATE / STORAGE
+===================================================================== */
+const LS = {
+  order: 'euro2026_order',
+  pool: 'euro2026_poolPlaced',
+  checklist: 'euro2026_checklist',
+  memo: 'euro2026_memo',
+  shopping: 'euro2026_shopping',
+};
+function loadJSON(key, fallback){ try{ const v = JSON.parse(localStorage.getItem(key)); return v || fallback; }catch(e){ return fallback; } }
+function saveJSON(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
+
+let orderState = loadJSON(LS.order, {});     // {dayId: [blockIndex,...]}
+let poolPlaced = loadJSON(LS.pool, {});      // {dayId: [poolIndexGlobal,...]}
+let checklistState = loadJSON(LS.checklist, {});
+let memoState = loadJSON(LS.memo, []);
+let shoppingState = loadJSON(LS.shopping, {});
+
+let activeDayId = null;
+
+/* =====================================================================
+   NAV
+===================================================================== */
+const titles = {dashboard:'종합 대시보드', timeline:'인터랙티브 타임라인', checklist:'준비물 체크리스트', memo:'메모 & 쇼핑 가이드'};
+function switchTab(name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active', b.dataset.tab===name));
+  document.getElementById('topTitle').textContent = titles[name];
+  if(name==='timeline') renderTimeline();
+}
+
+/* =====================================================================
+   DASHBOARD
+===================================================================== */
+function daysBetween(a,b){ return Math.round((b-a)/86400000); }
+
+function renderDashboard(){
+  const today = new Date(); today.setHours(0,0,0,0);
+  const start = new Date(TRIP[0].date);
+  const end = new Date(TRIP[TRIP.length-1].date);
+  const totalDays = daysBetween(start,end)+1;
+  let elapsed = daysBetween(start, today);
+  let dday = daysBetween(today, start);
+
+  const ddayText = document.getElementById('ddayText');
+  const ddaySub = document.getElementById('ddaySub');
+  const progressBar = document.getElementById('progressBar');
+  const progressLabel = document.getElementById('progressLabel');
+
+  let currentDay = null;
+  if(dday > 0){
+    ddayText.textContent = 'D-'+dday;
+    ddaySub.textContent = '2026.07.29(수) 출발까지';
+    progressBar.style.width = '0%';
+    progressLabel.textContent = '0 / '+totalDays+' 일차';
+  } else if(dday === 0){
+    ddayText.textContent = 'D-DAY';
+    ddaySub.textContent = '오늘 출발! 좋은 여행 되세요 ✈️';
+    currentDay = TRIP[0];
+    progressBar.style.width = (100/totalDays)+'%';
+    progressLabel.textContent = '1 / '+totalDays+' 일차';
+  } else if(elapsed >= 0 && elapsed < totalDays){
+    const dayNum = elapsed+1;
+    ddayText.textContent = dayNum+'일차';
+    ddaySub.textContent = '여정이 진행 중입니다';
+    currentDay = TRIP[elapsed];
+    progressBar.style.width = Math.round(dayNum/totalDays*100)+'%';
+    progressLabel.textContent = dayNum+' / '+totalDays+' 일차';
+  } else {
+    ddayText.textContent = 'END';
+    ddaySub.textContent = '2026년 여정이 마무리되었습니다';
+    currentDay = TRIP[TRIP.length-1];
+    progressBar.style.width = '100%';
+    progressLabel.textContent = totalDays+' / '+totalDays+' 일차';
+  }
+
+  const stayDay = currentDay || TRIP[0];
+  document.getElementById('stayCard').innerHTML = `
+    <div style="display:flex; gap:12px; align-items:center;">
+      <div style="width:44px; height:44px; border-radius:11px; background:var(--paper-2); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+        <svg width="22" height="22" fill="none" stroke="var(--gold-deep)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V7l8-4v18M13 21V11l6 4v6M9 9v.01M9 12v.01M9 15v.01"/></svg>
+      </div>
+      <div style="flex:1;">
+        <div style="font-weight:700; font-size:15px;">${stayDay.stay}</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:2px;">${stayDay.city}, ${stayDay.country} · ${stayDay.label}</div>
+      </div>
+      <span class="badge ${stayDay.checkin?'badge-pending':'badge-done'}">${stayDay.checkin? '체크인 예정' : '투숙 중'}</span>
+    </div>`;
+
+  renderRouteLine(elapsed);
+}
+
+function renderRouteLine(elapsed){
+  const svg = document.getElementById('routeSvg');
+  const cities = [];
+  TRIP.forEach((d,i)=>{ if(cities.length===0 || cities[cities.length-1].city!==d.city) cities.push({city:d.city, idx:i}); });
+  const stepW = 92, padX = 24, y = 54;
+  const w = padX*2 + stepW*(cities.length-1) + 40;
+  svg.setAttribute('width', w);
+  svg.setAttribute('viewBox', `0 0 ${w} 108`);
+  let html = `<line x1="${padX}" y1="${y}" x2="${padX+stepW*(cities.length-1)}" y2="${y}" stroke="#DED5C0" stroke-width="4"/>`;
+  cities.forEach((c,i)=>{
+    const x = padX + i*stepW;
+    const isPast = elapsed !== null && c.idx < elapsed && elapsed >= 0;
+    const isNow = elapsed !== null && elapsed >= 0 && (i===cities.length-1 ? c.idx<=elapsed : (c.idx<=elapsed && (i+1>=cities.length || cities[i+1].idx>elapsed)));
+    let fill = '#FBF8F1', stroke = '#C99A3E', r = 7;
+    if(elapsed!==null && elapsed>=0){
+      if(c.idx < elapsed) { fill = '#6C8A6F'; stroke='#4B6650'; }
+      if(isNow){ fill = '#C99A3E'; stroke='#9C7325'; r=9; }
+    }
+    html += `<circle cx="${x}" cy="${y}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="2.5"/>`;
+    html += `<text x="${x}" y="${y-16}" font-family="IBM Plex Mono, monospace" font-size="10" fill="#6B7280" text-anchor="middle">${TRIP[c.idx].label.replace(/\(.\)/,'')}</text>`;
+    html += `<text x="${x}" y="${y+24}" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="${isNow?'#9C7325':'#1E2430'}" text-anchor="middle">${c.city}</text>`;
+  });
+  svg.innerHTML = html;
+}
+
+/* =====================================================================
+   TIMELINE
+===================================================================== */
+function renderDayChips(){
+  const wrap = document.getElementById('dayChips');
+  const today = new Date(); today.setHours(0,0,0,0);
+  wrap.innerHTML = TRIP.map(d=>{
+    const isToday = new Date(d.date).getTime()===today.getTime();
+    return `<div class="daychip ${d.id===activeDayId?'active':''} ${isToday?'today':''}" onclick="selectDay('${d.id}')">
+      <div class="d">${d.label}</div><div class="c">${d.city}</div>
+    </div>`;
+  }).join('');
+}
+
+function selectDay(id){ activeDayId = id; renderDayChips(); renderTimelineBody(); renderPool(); }
+
+function renderTimeline(){
+  if(!activeDayId){
+    const today = new Date(); today.setHours(0,0,0,0);
+    const found = TRIP.find(d=>new Date(d.date).getTime()>=today.getTime());
+    activeDayId = (found || TRIP[0]).id;
+  }
+  renderDayChips();
+  renderTimelineBody();
+  renderPool();
+}
+
+let customAdditions = loadJSON('euro2026_customAdd', {}); // {dayId:[{title,desc,map,period,tag,fromPool}]}
+
+function getOrderedBlocks(day){
+  const extra = (customAdditions[day.id]||[]).map(c=>({period:c.period, tag:'관광', title:'📌 '+c.title, place:c.desc, time:'', tip:c.map?'추천 스팟 풀에서 추가됨':'', map:c.map, _added:true}));
+  const allBlocks = day.blocks.concat(extra);
+  const idx = orderState[day.id];
+  if(idx && idx.length === allBlocks.length){
+    return idx.map(i=>allBlocks[i]).map((b,pos)=>({...b, _origIndex: idx[pos]}));
+  }
+  return allBlocks.map((b,i)=>({...b, _origIndex:i}));
+}
+
+function addPoolToTimeline(gi){
+  const spot = POOL[gi];
+  const day = TRIP.find(d=>d.id===activeDayId);
+  if(!customAdditions[day.id]) customAdditions[day.id] = [];
+  customAdditions[day.id].push({title:spot.title, desc:spot.desc, map:spot.map, period:'추가 일정'});
+  saveJSON('euro2026_customAdd', customAdditions);
+  delete orderState[day.id]; // reset manual order so new block appears
+  saveJSON(LS.order, orderState);
+  renderTimelineBody();
+}
+
+function tagIcon(tag){
+  return {'이동':'🚌','관광':'📍','식사':'🍽️','숙소':'🏨'}[tag] || '•';
+}
+
+function renderTimelineBody(){
+  const day = TRIP.find(d=>d.id===activeDayId);
+  const body = document.getElementById('timelineBody');
+  const blocks = getOrderedBlocks(day);
+
+  let html = `<div class="card" style="margin-bottom:12px;">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div>
+        <div class="font-display" style="font-size:17px; font-weight:700;">${day.city} <span style="font-weight:400; font-size:13px; color:var(--muted);">· ${day.country}</span></div>
+        <div style="font-size:12px; color:var(--muted); margin-top:2px;">${day.label} · ${day.stay}</div>
+      </div>
+      <span style="font-size:10px; font-family:'IBM Plex Mono',monospace; color:var(--muted); text-align:right;">⠿ 핸들을 눌러<br>순서 변경 ↕</span>
+    </div>
+  </div>
+  <div id="sortableContainer"></div>`;
+  body.innerHTML = html;
+
+  const container = document.getElementById('sortableContainer');
+  let currentPeriod = null;
+  let inner = '';
+  blocks.forEach((b, pos)=>{
+    if(b.period !== currentPeriod){
+      inner += `<div class="tl-period">${b.period}</div>`;
+      currentPeriod = b.period;
+    }
+    inner += `<div class="tl-card tag-${b.tag}" data-idx="${b._origIndex}">
+      <div class="tl-top">
+        <div>
+          <span class="drag-handle">⠿</span><span class="tl-time">${b.time||''}</span>
+          <div class="tl-title">${tagIcon(b.tag)} ${b.title}</div>
+          ${b.place?`<div class="tl-place">${b.place}</div>`:''}
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:flex-end; gap:6px;">
+          <span class="tl-tag-pill">${b.tag}</span>
+          ${b.map?`<div class="tl-map-btn" onclick="openMap('${b.map.replace(/'/g,"\\'")}')"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg></div>`:''}
+        </div>
+      </div>
+      ${b.tip?`<div class="tl-tip">💡 ${b.tip}</div>`:''}
+    </div>`;
+  });
+  container.innerHTML = inner;
+
+  Sortable.create(container, {
+    animation:180, handle:'.drag-handle', ghostClass:'sortable-ghost', dragClass:'sortable-drag',
+    onEnd:function(){
+      const newIdx = Array.from(container.children).filter(el=>el.dataset.idx!==undefined).map(el=>parseInt(el.dataset.idx));
+      orderState[day.id] = newIdx;
+      saveJSON(LS.order, orderState);
+    }
+  });
+}
+
+function renderPool(){
+  const day = TRIP.find(d=>d.id===activeDayId);
+  const zone = document.getElementById('poolZone');
+  const spots = POOL.map((p,i)=>({...p, _gi:i})).filter(p=>p.city===day.city);
+  if(spots.length===0){
+    zone.innerHTML = `<div style="font-size:12.5px; color:var(--muted); text-align:center; padding:10px;">이 도시에 등록된 추천 스팟이 없습니다.</div>`;
+    return;
+  }
+  zone.innerHTML = spots.map(s=>`
+    <div class="pool-card">
+      <b>${s.title}</b>${s.desc}
+      <div style="margin-top:7px; display:flex; gap:12px; align-items:center;">
+        ${s.map?`<span onclick="openMap('${s.map.replace(/'/g,"\\'")}')" style="font-size:11px; color:var(--brick); font-weight:700; cursor:pointer;">📍 지도 보기</span>`:''}
+        <span onclick="addPoolToTimeline(${s._gi})" style="font-size:11px; color:var(--moss); font-weight:700; cursor:pointer;">＋ 오늘 일정에 추가</span>
+      </div>
+    </div>`).join('');
+}
+
+function openMap(query){
+  window.open('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(query), '_blank');
+}
+
+/* =====================================================================
+   CHECKLIST
+===================================================================== */
+function renderChecklist(){
+  const body = document.getElementById('checklistBody');
+  let totalItems=0, totalDone=0;
+  let html = '';
+  CHECKLIST.forEach((group, gi)=>{
+    let done = 0;
+    let itemsHtml = group.items.map((item, ii)=>{
+      const key = gi+'-'+ii;
+      const isOn = !!checklistState[key];
+      if(isOn) done++;
+      return `<div class="chk-item">
+        <div class="chk-box ${isOn?'on':''}" onclick="toggleChk('${key}')">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <div class="chk-label ${isOn?'done':''}" onclick="toggleChk('${key}')">${item}</div>
+      </div>`;
+    }).join('');
+    totalItems += group.items.length; totalDone += done;
+    html += `<div class="card chk-cat">
+      <div class="chk-cat-head"><h3>${group.cat}</h3><span class="chk-progress">${done}/${group.items.length}</span></div>
+      ${itemsHtml}
+    </div>`;
+  });
+  body.innerHTML = html;
+  const pct = totalItems? Math.round(totalDone/totalItems*100) : 0;
+  document.getElementById('chkOverallPct').textContent = pct+'%';
+  document.getElementById('chkOverallBar').style.width = pct+'%';
+}
+function toggleChk(key){
+  checklistState[key] = !checklistState[key];
+  saveJSON(LS.checklist, checklistState);
+  renderChecklist();
+}
+
+/* =====================================================================
+   MEMO & SHOPPING
+===================================================================== */
+function addMemo(){
+  const input = document.getElementById('memoInput');
+  const val = input.value.trim();
+  if(!val) return;
+  memoState.unshift({text:val, ts:new Date().toLocaleString('ko-KR',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})});
+  saveJSON(LS.memo, memoState);
+  input.value = '';
+  renderMemo();
+}
+function deleteMemo(i){
+  memoState.splice(i,1);
+  saveJSON(LS.memo, memoState);
+  renderMemo();
+}
+function renderMemo(){
+  const list = document.getElementById('memoList');
+  if(memoState.length===0){ list.innerHTML = `<div style="font-size:12.5px; color:var(--muted); text-align:center; padding:14px 0;">아직 저장된 메모가 없습니다.</div>`; return; }
+  list.innerHTML = memoState.map((m,i)=>`
+    <div class="memo-item"><span class="memo-del" onclick="deleteMemo(${i})">×</span><div class="ts">${m.ts}</div>${m.text}</div>
+  `).join('');
+}
+
+function renderShopping(){
+  const body = document.getElementById('shoppingBody');
+  let html = '';
+  SHOPPING.forEach((grp, gi)=>{
+    html += `<div class="shop-city"><span class="shop-country-tag">${grp.country}</span>${grp.city}</div>`;
+    grp.items.forEach((item, ii)=>{
+      const key = gi+'-'+ii;
+      const isOn = !!shoppingState[key];
+      html += `<div class="chk-item">
+        <div class="chk-box ${isOn?'on':''}" onclick="toggleShop('${key}')">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <div class="chk-label ${isOn?'done':''}" onclick="toggleShop('${key}')" style="font-size:13px;">${item}</div>
+      </div>`;
+    });
+    if(grp.loc) html += `<div style="font-size:11.5px; color:var(--muted); margin-top:6px; margin-bottom:4px;">📍 ${grp.loc}</div>`;
+  });
+  body.innerHTML = html;
+}
+function toggleShop(key){
+  shoppingState[key] = !shoppingState[key];
+  saveJSON(LS.shopping, shoppingState);
+  renderShopping();
+}
+
+/* =====================================================================
+   MODAL
+===================================================================== */
+function openModal(title, body){
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalBody').textContent = body;
+  document.getElementById('modalBg').style.display = 'flex';
+}
+function closeModal(){ document.getElementById('modalBg').style.display = 'none'; }
+
+/* =====================================================================
+   INIT
+===================================================================== */
+renderDashboard();
+renderChecklist();
+renderMemo();
+renderShopping();
+</script>
 </body>
 </html>
